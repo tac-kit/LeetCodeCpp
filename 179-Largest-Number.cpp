@@ -57,6 +57,7 @@ public:
         vector<string> numsStr;
         for (int num: nums) numsStr.push_back(to_string(num));
         // 对于纯数字字符串，直接比较字符串的结果与转换为数字再比较是一样的，所以可以直接比较字符串。
+        // 上述结论在长度不等时不成立，例如"100"<"50"。因为s1+s2与s2+s1长度始终相等，所以可以这样写。
         sort(numsStr.begin(), numsStr.end(), [](const string& s1, const string& s2){return s1+s2 > s2+s1;});
         // numsStr已经从大到小排序，如果最大的数为0，则返回"0"
         if (numsStr[0] == "0") return "0";
